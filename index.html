@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conference Ticket Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&amp;display=swap" rel="stylesheet">
+    <script type="text/javascript" src="./scripts.js" defer=""></script>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+
+  <body>
+    <div class="container">
+      <img src="Images/logo-full.svg"></img>
+    </div>
+    <h1 class="title">Your Journey to Coding Conf <br> 2025 Starts Here!</h1>
+    <p class="text">Secure your spot at next year's biggest coding conference.</p>
+    <form>
+      <div class="upload">
+        <p class="text">Upload Avatar</p>
+        <div id="upload-box">
+          <input type="file" id="avatar" accept="image/*">
+        </div>
+      </div>
+      <div class="text-form">
+        <p class="text">Full Name</p>
+        <input class="text-input" id="nome" type="text" placeholder="Full Name Here">
+      </div>
+      <div class="text-form">
+        <p class="text">Email Address</p>
+        <input class="text-input" id="email" type="text" placeholder="example@email.com">
+      </div>
+      <div class="text-form">
+        <p class="text">GitHub Username</p>
+        <input class="text-input" id="github" type="text" placeholder="@yourusername">
+      </div>
+      <button onclick="generateTicket()">Generate My Ticket</button>
+    </form>
+    <div>
+      
+    </div>
+
+  </body>
+
+</html>

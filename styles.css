@@ -1,0 +1,135 @@
+/*body {
+  background-image: url("Images/pattern-lines.svg"),
+    url("Images/pattern-circle.svg"),
+    url("Images/pattern-squiggly-line-top.svg"),
+    url("Images/pattern-squiggly-line-bottom-desktop.svg"),
+    url("Images/background-desktop.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+}*/
+
+body {
+  font-family: Inconsolata;
+  font-size: 16px;
+  background-image: url("Images/pattern-lines.svg"),
+    url("Images/pattern-circle.svg"),
+    url("Images/pattern-squiggly-line-top.svg"),
+    url("Images/pattern-squiggly-line-bottom.svg"),
+    url("Images/background-desktop.png");
+  background-repeat: no-repeat;
+  background-position: center, bottom right 20%, top right, bottom left, center;
+  background-size: cover, 20%, 30%, 50%, cover;
+  background-attachment: fixed;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.text-container {
+  color: white;
+  font-family: Inconsolata;
+  font-size: 34px;
+  font-weight: 800;
+}
+
+.title {
+  color: white;
+  font-family: Inconsolata;
+  font-weight: 800;
+  text-align: center;
+  font-size: 50px;
+  margin-top: 60px;
+  margin-bottom: 30px;
+}
+
+.title span {
+  background: linear-gradient(to right, hsl(7, 86%, 67%), hsl(0, 0%, 100%));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text {
+  color: white;
+  font-family: Inconsolata;
+  font-size: 22px;
+  font-weight: 400;
+  margin: 0;
+  text-align: left;
+}
+
+.center {
+  text-align: center;
+}
+
+.upload {
+  width: 400px;
+  height: auto;
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#upload-box {
+  background-color: rgb(255, 255, 255, 0.1);
+  width: auto;
+  height: 130px;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: dashed rgb(255, 255, 255, 0.3);
+  border-width: 2px;
+}
+
+.text-form {
+  margin-left: 20px;
+  width: auto;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.text-input {
+  width: 360px;
+  height: 20px;
+  display: block;
+  padding: 19px;
+  border-radius: 12px;
+  margin-top: 11px;
+  background-color: rgb(255, 255, 255, 0.1);
+  border: 1px solid white;
+  color: hsl(0, 0%, 100%);
+  font-size: 16px;
+  font-family: "Inconsolata";
+}
+
+button {
+  margin-top: 20px;
+  width: 400px;
+  height: 60px;
+  margin-bottom: 50px;  
+  text-align: center;
+  color: hsl(248, 70%, 10%);
+  font-family: 'Inconsolata', monospace;
+  font-weight: 700;
+  font-size: 16px;
+  background-color: hsl(7, 71%, 60%);
+  border-radius: 10px;
+  border: 2px solid none;
+}
+
+#info span {
+  color: hsl(7, 71%, 60%);
+}
