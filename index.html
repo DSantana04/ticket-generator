@@ -20,9 +20,13 @@
     <p class="text">Secure your spot at next year's biggest coding conference.</p>
     <form>
       <div class="upload">
-        <p class="text">Upload Avatar</p>
+        <label class="text" for="imagem">Upload Avatar<label>
         <div id="upload-box">
-          <input type="file" id="avatar" accept="image/*">
+          <span id="upload-button" class="upload-button">
+            <img id="upload-icon" class="upload-icon" src="Images/icon-upload.svg" alt="avatar">
+          </span>
+          <span id="upload-text">Drag and drop or click to upload</span>
+          <input type="file" id="image" accept="image/jpeg image/png" draggable="true" dropzone="true">
         </div>
       </div>
       <div class="text-form">
@@ -39,9 +43,6 @@
       </div>
       <button onclick="generateTicket()">Generate My Ticket</button>
     </form>
-    <div>
-      
-    </div>
 
   </body>
 
