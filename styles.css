@@ -20,10 +20,11 @@ body {
     url("Images/pattern-circle.svg"),
     url("Images/pattern-squiggly-line-top.svg"),
     url("Images/pattern-squiggly-line-bottom.svg"),
+    url("Images/pattern-squiggly-line-bottom-desktop.svg"),
     url("Images/background-desktop.png");
   background-repeat: no-repeat;
-  background-position: center, bottom right 20%, top right, bottom left, center;
-  background-size: cover, 20%, 30%, 50%, cover;
+  background-position: center, bottom right 20%, top right, bottom left, bottom left ,center;
+  background-size: cover, 20%, 30%, 50%, 50% ,cover;
   background-attachment: fixed;
   text-align: center;
   display: flex;
@@ -132,4 +133,8 @@ button {
 
 #info span {
   color: hsl(7, 71%, 60%);
+}
+
+#ticket {
+  margin-top: 15%;
 }
