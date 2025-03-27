@@ -22,26 +22,37 @@
       <div class="upload">
         <label class="text" for="imagem">Upload Avatar<label>
         <div id="upload-box">
+          <div id="image-preview" style="display: none;">
+            <img id="preview-image" src="" alt="Image Preview" style="max-width: 100%; height: auto;">
+            <div>
+              <button id="change-button" type="button">Change image</button>
+              <button id="delete-button" type="button">Delete image</button>
+            </div>
+          </div>
           <span id="upload-button" class="upload-button">
             <img id="upload-icon" class="upload-icon" src="Images/icon-upload.svg" alt="avatar">
           </span>
           <span id="upload-text">Drag and drop or click to upload</span>
-          <input type="file" id="image" accept="image/jpeg image/png" draggable="true" dropzone="true">
+          <input type="file" id="image" accept="image/jpeg,image/png" draggable="true" dropzone="true" onchange="previewImage(event)">
         </div>
+        <small class="error_msg"></small>
       </div>
       <div class="text-form">
         <p class="text">Full Name</p>
         <input class="text-input" id="nome" type="text" placeholder="Full Name Here">
+        <small class="error_msg"></small>
       </div>
       <div class="text-form">
         <p class="text">Email Address</p>
         <input class="text-input" id="email" type="text" placeholder="example@email.com">
+        <small class="error_msg"></small>
       </div>
       <div class="text-form">
         <p class="text">GitHub Username</p>
         <input class="text-input" id="github" type="text" placeholder="@yourusername">
+        <small class="error_msg"></small>
       </div>
-      <button onclick="generateTicket()">Generate My Ticket</button>
+      <button type="button" onclick="generateTicket()">Generate My Ticket</button>
     </form>
 
   </body>

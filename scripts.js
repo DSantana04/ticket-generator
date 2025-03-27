@@ -1,75 +1,104 @@
+function geraErro(input, mensagem) {
+    const inputField = input.parentElement;
+    const small = inputField.querySelector('small');
 
+    small.innerText = mensagem;
+    inputField.className = 'input-field error';
+}
 
-imagem.addEventListener('change', () => {
-    if (imagem.files && imagem.files[0]) {
-        const file = imagem.files[0];
-        const validImageTypes = ['image/png', 'image/jpeg'];
+function geraErroImagem(mensagem) {
+    const formInfoSection = document.querySelector('.form_info_section');
+    const small = formInfoSection.querySelector('small');
 
-        if (validImageTypes.includes(file.type)) {
-            const reader = new FileReader();
+    small.innerText = mensagem;
+    formInfoSection.className = 'form_info_section error';
+}
 
-            reader.onload = (e) => {
-                uploadIcon.src = e.target.result; 
-                uploadIcon.alt = 'Imagem carregada'; 
-                setSuccessForImage();
-            };
+function previewImage(event) {
+    const preview = document.getElementById('image-preview');
+    const uploadButton = document.getElementById('upload-button');
+    const uploadText = document.getElementById('upload-text');
+    const uploadIcon = document.getElementById('upload-icon');
+    const previewImage = document.getElementById('preview-image');
+    const changeButton = document.getElementById('change-button');
+    const deleteButton = document.getElementById('delete-button');
 
-            reader.readAsDataURL(file); 
-        } else {
-            console.log('Formato de imagem inválido. Apenas PNG ou JPEG são permitidos.');
-        }
-    }
-});
-
-function checkInputs() {
-    console.log("Fui chamado");
-
-    const emailValue = email.value.trim();
-    const imagemFile = imagem.files[0];
-    const nameValue = name.value.trim();    
-    const gitHubValue = gitHub.value.trim();
-
-    let emailValid = false;
-    let imagemValid = false;
-    let nameValid = false;
-    let gitHubValid = false;
-
-    if (emailValue === "") {
-        setErrorFor(email, 'O email é obrigatório');
-    } else if (!checkEmail(emailValue)) {
-        setErrorFor(email, 'Insira um email válido');
-    } else {
-        emailValid = true;
-    }
-
-    if (nameValue === "") {
-        setErrorFor(name, 'O nome é obrigatório');
-    } else {
-        nameValid = true;
-    }
-
-    if (gitHubValue === "") {
-        setErrorFor(gitHub, 'O usuário é obrigatório');
-    } else{
-        gitHubValid = true;
-    }
-
-    if (imagem.files.length === 0) {
-        setErrorForImage(imagem, 'É obrigatório carregar uma foto');
-    } else {
-        const imagemFile = imagem.files[0];
-        const validImageTypes = ['image/png', 'image/jpeg'];
-        if (!validImageTypes.includes(imagemFile.type)) {
-            setErrorForImage(imagem, 'A imagem deve ser PNG ou JPEG');
-        } else if (imagemFile.size > 500 * 1024) {
-            setErrorForImage(imagem, 'A imagem deve ser menor que 500KB');
-        } else {
-            console.log(`Imagem válida: ${imagemFile.size / 1024} KB`);
-            imagemValid = true;
-        }
-    }
-};
-
-function geracaoTicket(){
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            previewImage.src = e.target.result;
+            preview.style.display = 'block';
     
+            localStorage.setItem('image', e.target.result);
+
+            if (uploadText.style.display !== 'none') {
+                uploadText.style.display = 'none';
+                uploadIcon.style.display = 'none';
+                uploadButton.style.display = 'none';
+            }
+        }
+        reader.readAsDataURL(file);
+    }
+
+    changeButton.onclick = function() {
+        document.getElementById('image').click();
+        // Hide upload text and icon when changing image
+        uploadText.style.display = 'none';
+        uploadIcon.style.display = 'none';
+    }
+
+    deleteButton.onclick = function() {
+        document.getElementById('image').value = '';
+        preview.style.display = 'none';
+        // Show upload text and icon
+        uploadText.style.display = 'flex';
+        uploadIcon.style.display = 'flex';
+    }
+}
+
+function generateTicket() {
+    // Get input values
+    const imageInput = document.getElementById('image');
+    const nameInput = document.getElementById('nome');
+    const emailInput = document.getElementById('email');
+    const githubInput = document.getElementById('github');
+
+    // Validate name
+    if (nameInput.value == '') {
+        geraErro(nameInput, 'Nome não pode estar em branco.');
+        return;
+    }
+
+    // Validate image upload
+    const file = imageInput.files[0];
+    const validFormats = ['image/jpeg', 'image/png'];
+    if (!validFormats.includes(file.type) || file.size > 500 * 1024 || file.size == 0) {
+        geraErro(imageInput, 'Imagem inválida. Por favor, selecione uma imagem JPEG ou PNG de até 500KB.');
+        return;
+    }
+
+    // Validate email format
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(emailInput.value) || emailInput.value == '') {
+        geraErro(emailInput, 'Email inválido.');
+        return;
+    }
+
+    // Validate GitHub username
+    if (!githubInput.value.startsWith('@') || githubInput.value == '') {
+        geraErro(githubInput, 'Nome de usuário do GitHub deve começar com @.');
+        return;
+    }
+
+    // Store data in local storage
+    localStorage.setItem('userData', JSON.stringify({
+        name: nameInput.value,
+        email: emailInput.value,
+        github: githubInput.value,
+        image: file.name // Store the image name or handle it as needed
+    }));
+
+    // Redirect to ticket.html
+    window.location.href = 'TicketPage/ticket.html';
 }
